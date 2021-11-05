@@ -5,7 +5,44 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#cuadro{
+    display: inline-block;
+    width: 5vh;
+    height: 5vh;
+    background-color: chocolate;
+    margin-top: 0%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: animacion;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
 
+@keyframes animacion {
+    0%{background-color: chocolate;width: 5vh; height: 5vh;}
+    25%{background-color: #85A392;width: 5vh;height: 100vh; }
+    50%{background-color: #F5B971;width: 5vh;height: 5vh; }
+    75%{background-color: #FDD998;width: 198vh;height: 5vh;}
+    85%{background-color: #FFECC7}
+    100%{background-color: chocolate;width: 5vh;height: 5vh;}
+}
+
+#cuadro2{
+    display: inline-block;
+    width: 5vh;
+    height: 5vh;
+    background-color: chocolate;
+    margin-top: 0%;
+    position: absolute;
+    right: 0;
+    bottom: 0;;
+    animation-name: animacion;
+    animation-duration: 15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
 
 
 .logo {
@@ -13,6 +50,12 @@
     margin-left: 300px;
     margin-top: 200px;
     width: 250px;
+}
+
+.logo1{
+    background-color: chartreuse;
+    width: 10px;
+    height: 100%;
 }
 
 .formulario {
@@ -23,9 +66,8 @@ background-color:white;
 padding: 50px;
 margin: auto;
 border-radius: 20px;
-margin-left: 450px;
+margin-left: 400px;
 margin-top: 200px;
-
 }
 
 .formulario h1 {
@@ -45,7 +87,7 @@ margin-bottom: 30px;
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 20px;
     border: 1px solid ;
     background-color:#DED9C4;
@@ -63,5 +105,18 @@ margin-bottom: 30px;
 
 .texto {
     text-align: center;
+    color: rgb(11, 11, 26);
+    
 }
+
+.texto2{
+    text-align: center;   
+}
+
+.texto2 a{
+    text-align: center;
+    color: rgb(5, 5, 19);
+    margin-top: 10px;
+}
+  
   
