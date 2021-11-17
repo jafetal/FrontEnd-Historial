@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutAdministradorComponent } from './layout-administrador.component';
 import { LayoutAdministradorRoutingModule } from './layout-administrador.routing.module';
+import { HistorialService } from 'src/app/services/historial.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { LayoutAdministradorRoutingModule } from './layout-administrador.routing
   ],
   entryComponents: [],
   providers: [
+    HistorialService
   ]
 })
 export class LayoutAdministradorModule { }
