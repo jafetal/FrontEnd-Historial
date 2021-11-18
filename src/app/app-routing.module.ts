@@ -8,26 +8,26 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'login'
   },
-  {
-    path: 'administrador',
-    loadChildren: () =>
-          import('./views/administrador/layout-administrador/layout-administrador.module').then(
-            (m) => m.LayoutAdministradorModule
-          )
-  },
   // {
   //   path: 'administrador',
-  //   component: LayoutAdministradorComponent,
-  //   children: [
-  //     {
-  //       path: '',
-  //       loadChildren: () =>
+  //   loadChildren: () =>
   //         import('./views/administrador/layout-administrador/layout-administrador.module').then(
   //           (m) => m.LayoutAdministradorModule
   //         )
-  //     }
-  //   ]
   // },
+  {
+    path: 'administrador',
+    component: LayoutAdministradorComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./views/administrador/layout-administrador/layout-administrador.module').then(
+            (m) => m.LayoutAdministradorModule
+          )
+      }
+    ]
+  },
   {
     path: 'login',
     loadChildren: () =>

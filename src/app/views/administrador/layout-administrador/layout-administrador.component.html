@@ -1,0 +1,40 @@
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper"  [ngClass]="status ? 'hide' : 'show'">
+      <div class="sidebar-heading">Sistema Médico </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Consulta de historial</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Generación de historial</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Usuarios</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Cerrar sesión</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+        <div class="container-fluid">
+          <button class="btn btn-primary" (click)="clickEvent()">Toggle Menu</button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              Bienvenido {{usuario.nombre}}
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->

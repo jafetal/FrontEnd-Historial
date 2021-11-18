@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-layout-administrador',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutAdministradorComponent implements OnInit {
 
+  status = false;
+  usuario: Usuario = new Usuario();
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+  }
+
+  public clickEvent(): void{
+      this.status = !this.status;
   }
 
 }
