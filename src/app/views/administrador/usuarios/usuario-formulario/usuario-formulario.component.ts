@@ -4,30 +4,27 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioSesion } from 'src/app/models/usuario-sesion';
-import { LoginService } from 'src/app/services/login.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-usuario-formulario',
+  templateUrl: './usuario-formulario.component.html',
+  styleUrls: ['./usuario-formulario.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class UsuarioFormularioComponent implements OnInit {
+
+  usuario: UsuarioSesion = new UsuarioSesion();
   btnSubmit = false;
-  loginRequest = new UsuarioSesion();
   mostrarCorreo = true;
   focusContrasena = false;
   focusCorreo = true;
   btnSiguiente = false;
-  usuarioConsultado = new Usuario();
-  inicioFallido = false;
 
-  constructor(private loginService: LoginService,
-              private router: Router,
-              private toastr: ToastrService
-              ) { }
+  constructor(private usuarioService: UsuarioService,
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.logout();
   }
 
   public enviarFormulario(formulario: NgForm): void {
@@ -38,21 +35,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    if (!this.loginRequest.user || !this.loginRequest.password) {
+    if (!this.usuario.user || !this.usuario.password || !this.usuario.name) {
       this.btnSubmit = false;
       return;
     }
 
-    this.loginService.iniciarSesion(this.loginRequest).subscribe( (data) => {
-      localStorage.setItem('usuarioIniciado', JSON.stringify(data));
-      this.usuarioConsultado = data;
-      this.toastr.success('Se ha iniciado sesión correctamente', 'Bienvenido' , {
+    this.usuarioService.nuevoUsuario(this.usuario).subscribe( (data) => {
+      console.log(data);
+      this.toastr.success('Se ha agregado el usuario correctamente', 'Éxito' , {
         timeOut :  3000
       });
-      this.router.navigate(['administrador']);
+      this.router.navigate(['administrador/usuarios']);
     }, (error) => {
-      this.inicioFallido = true;
-      this.toastr.error('Contraseña y/o usuario incorrecto', 'Falló inicio de sesión' , {
+      this.toastr.error('El usuario no pudo ser agregado correctamente', 'Error al agregar' , {
         timeOut :  3000
       });
     });
@@ -65,10 +60,7 @@ export class LoginComponent implements OnInit {
       control.markAsDirty({ onlySelf: true });
     });
   }
-
-  public logout(): void {
-    localStorage.removeItem('usuarioIniciado');
+  public cancelar(): void {
+    this.router.navigate(['administrador/usuarios']);
   }
 }
-
-

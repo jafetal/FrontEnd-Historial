@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutAdministradorComponent } from './layout-administrador.component';
 import { LayoutAdministradorRoutingModule } from './layout-administrador.routing.module';
 import { HistorialService } from 'src/app/services/historial.service';
+import { LoginModule } from '../login/login.module';
 
 @NgModule({
   imports: [

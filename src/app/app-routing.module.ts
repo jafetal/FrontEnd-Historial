@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdministradorAuthGuard } from './auth/administrador-auth-guard.service';
 import { LayoutAdministradorComponent } from './views/administrador/layout-administrador/layout-administrador.component';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: 'administrador',
     component: LayoutAdministradorComponent,
+    canActivate: [AdministradorAuthGuard],
     children: [
       {
         path: '',

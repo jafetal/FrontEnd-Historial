@@ -6,7 +6,7 @@ export class AdministradorAuthService {
   constructor() {}
 
   public getToken(): string | null {
-    return localStorage.getItem('token-administrador');
+    return localStorage.getItem('usuarioIniciado');
   }
 
   public isAuthenticated(): boolean {

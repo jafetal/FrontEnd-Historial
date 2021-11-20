@@ -1,0 +1,42 @@
+.contenedor-agregar {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #8df3e2;
+    background-color: #e0fffa;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .contenedor-agregar i {
+      
+    color: #09e2be;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .contenedor-agregar:hover {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #e0fffa;
+    background-color: #adfaed;
+  }
+  
+  .contenedor-agregar span {
+    cursor: pointer;
+  }
+  
+.header{
+    background-color: #e0faff;
+    padding: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 32px;
+    color: rgb(99, 175, 157);
+}

@@ -1,28 +1,76 @@
 
 
 <div class="contenido">
-    <div id="cuadro"></div>
-    <div class="logo">
-        <img src="assets/Imagenes/doctor.png" alt="Medico">
-    </div>
+        <div id="cuadro"></div>
+        <div style=" text-align: center;">
+        <form #formulario="ngForm"  (ngSubmit)="enviarFormulario(formulario)" novalidate="novalidate">
+            <div class="row justify-content-md-center align-items-center">
+                <div class="col-md-4">
+                    <div style="text-align: center;">
+                        <img class="logo" src="assets/Imagenes/doctor.png" alt="Medico">
+                    </div>
+                </div>
 
-    <div class="formulario">
-        <form>
-            <img src="assets/Imagenes/person.png" alt="Medico">
-            <h1 class="texto">Inicio de Sesion</h1>
-            <div class="input-icono">
-                <input id="icon" class="input" type="text" placeholder="Usuario" name="usuario" id="usuario">
+                <div class="col-md-4">
+                    <div class="row"><div class="col-md-12"><h1 class="texto">Inicio de Sesión</h1></div></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="el-input">
+                                <input id="icon" class="input" 
+                                    #nombre="ngModel"
+                                    [(ngModel)]="loginRequest.user"
+                                    id="nombre"
+                                    name="nombre"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="on"
+                                    placeholder="Usuario"
+                                    [autofocus]="focusCorreo"
+                                    [disabled]="btnSiguiente"/>
+                                <div *ngIf="nombre.errors?.required && nombre.dirty" class="error">
+                                    *El usuario es requerido
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="el-input">
+                                <input
+                                #contrasena="ngModel"
+                                [(ngModel)]="loginRequest.password"
+                                id="contrasena"
+                                name="contrasena"
+                                class="input"
+                                type="password"
+                                maxlength="50"
+                                required="required"
+                                autocomplete="off"
+                                placeholder="Contraseña"
+                                [autofocus]="focusContrasena"
+                                />
+                                <div *ngIf="contrasena.errors?.required && contrasena.dirty" class="error">
+                                    *La contraseña es requerida
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="row">
+                        <div class="col-md-12 text-center">
+                            <input class="button" type="submit" value="Iniciar sesión" >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="texto2"><a href="home">¿Olvido Usuario / Contraseña?</a></h4>
+                        </div>
+                    </div> 
+                </div>
             </div>
-            <input class="input" type="password" placeholder="Contraseña" name="contrasena" id="contrasena">
-            <a href="home"><input class="button" type="button" value="Iniciar Sesion" ></a>
-            <h4 class="texto2"><a href="home">¿Olvido Usuario / Contraseña?</a></h4>
-           
-
-            
-            
         </form>
-        
-    </div>
+        </div>
+
     <div id="cuadro2"></div>
     
 </div>

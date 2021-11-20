@@ -1,0 +1,111 @@
+.contenedor-agregar {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #8df3e2;
+    background-color: #e0fffa;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .contenedor-agregar i {
+      
+    color: #09e2be;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .contenedor-agregar:hover {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #e0fffa;
+    background-color: #adfaed;
+  }
+  
+  .contenedor-agregar span {
+    cursor: pointer;
+  }
+  
+.header{
+    background-color: #e0faff;
+    padding: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 32px;
+    color: rgb(99, 175, 157);
+}
+
+.button {
+  width: 95%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #5fff9c;
+  font-size: 15px;
+  margin: 15px;
+  font-weight: 600;
+
+}
+.button-cancelar {
+  width: 95%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #929292;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 15px;
+  color: white;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  border: 1px solid ;
+  background-color:#f2faff;
+  background-image:url(/src/assets/Imagenes/person.png); 
+  background-repeat: no-repeat; 
+  background-position: 2px 3px;
+}
+
+
+#icon{
+  background-image:url(/src/assets/Imagenes/person.png); 
+  background-repeat: no-repeat; 
+  background-position: 2px 3px;
+}
+
+.texto {
+  text-align: center;
+  color: rgb(84, 84, 95);
+  
+}
+
+.texto2{
+  text-align: center;   
+}
+
+.texto2 a{
+  text-align: center;
+  color: rgb(48, 48, 71);
+  margin-top: 10px;
+}
+
+.error {
+  color: rgba(255, 0, 0, 0.74) !important;
+  font-size: 0.86em;
+  text-align: left;
+}
+.el-input{
+  margin: 15px;
+}
+
+.contenido{
+  margin-top: 15vh;
+}

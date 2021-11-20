@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlBackend: 'https://localhost:44353/api/'
+  urlBackend: 'https://backendpatientfiles.azurewebsites.net/system/'
 };

@@ -1,0 +1,92 @@
+<div class="row header">
+    <div class="col-md-12">
+        Nuevo Usuario <i class="fas fa-plus-circle"></i>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-top: 35px;">
+        <div class="col-md-12">
+            <form #formulario="ngForm"  (ngSubmit)="enviarFormulario(formulario)" novalidate="novalidate">
+                <div class="row justify-content-md-center align-items-center">
+                    <div class="col-md-6">
+                        <div class="row"><div class="col-md-12">Usuario:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #usuarioI="ngModel"
+                                        [(ngModel)]="usuario.user"
+                                        id="usuario"
+                                        name="usuario"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Usuario"
+                                        [autofocus]="focusCorreo"
+                                        [disabled]="btnSiguiente"/>
+                                    <div *ngIf="usuarioI.errors?.required && usuarioI.dirty" class="error">
+                                        *El usuario es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Nombre:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #nombre="ngModel"
+                                        [(ngModel)]="usuario.name"
+                                        id="nombre"
+                                        name="nombre"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Nombre"
+                                        [autofocus]="focusCorreo"
+                                        [disabled]="btnSiguiente"/>
+                                    <div *ngIf="nombre.errors?.required && nombre.dirty" class="error">
+                                        *El nombre es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Constraseña:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #contrasena="ngModel"
+                                    [(ngModel)]="usuario.password"
+                                    id="contrasena"
+                                    name="contrasena"
+                                    class="input"
+                                    type="password"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Contraseña"
+                                    [autofocus]="focusContrasena"
+                                    />
+                                    <div *ngIf="contrasena.errors?.required && contrasena.dirty" class="error">
+                                        *La contraseña es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="row">
+                            <div class="col-md-6 text-center">
+                                <input class="button-cancelar" type="button" value="Cancelar" (click)="cancelar();">
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <input class="button" type="submit" value="Nuevo usuario" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

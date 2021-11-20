@@ -16,12 +16,12 @@ export class TokenInterceptor implements HttpInterceptor {
   private mensajeError = 'Ocurrió un error inesperado, favor de contactar al administrador del sistema.';
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token = ' ';
+    let token: string | null;
+    token = '';
 
-    if (this.router.url.includes('administrador')) {
-      // tslint:disable-next-line:no-non-null-assertion
-      token = JSON.parse( localStorage.getItem('token-administrador')! );
-    }
+    // if (this.router.url.includes('administrador')) {
+    //   token = localStorage.getItem('token-administrador');
+    // }
 
     let newRequest = null;
 
@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
       newRequest = request.clone({
         url: request.url
       });
-    } else if (request.url === 'login/authenticate') {
+    } else if (request.url === 'login/getUser') {
       newRequest = request.clone({
         url: environment.urlBackend + request.url
       });
@@ -37,8 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
       newRequest = request.clone({
         url: environment.urlBackend + request.url,
         setHeaders: {
-          'Content-Type': 'application/json, text/plain',
-          Authorization: `Bearer ${token}`
+          'Content-Type': 'application/json, text/plain'
         }
       });
     }
@@ -49,16 +48,16 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 409) {
           // Si se regresa una Exception con response Blob, este lo obliga a retornar un string
           if (error.error instanceof Blob) {
-            // tslint:disable-next-line:prefer-const
             var reader = new FileReader();
             reader.onload = (params) => {
-              // this.modalService.modalError(reader.result.toString());
-              console.log(reader.result?.toString());
+              // this.modalService.modalError(params.target.result.toString());
+              if (reader.result != null){
+                console.log(reader.result.toString());
+              }
             };
             reader.readAsText(error.error);
           } else {
             console.log(error.error);
-            // this.modalService.modalError(error.error);
           }
         } else if (error.status === 503) {
           // Servidor no disponible por mantenimiento
@@ -66,12 +65,11 @@ export class TokenInterceptor implements HttpInterceptor {
         } else if (error.status === 401 || error.status === 0) {
           // Cuando el token enviado en la peticion es invalido, el servidor retorna un error 401
           if (this.router.url.includes('administrador')) {
-            localStorage.removeItem('token-administrador');
-            this.router.navigate(['/login-administrador']);
+            // localStorage.removeItem('token-administrador');
+            this.router.navigate(['/login']);
           }
         } else {
           console.log(this.mensajeError);
-          // this.modalService.modalError(this.mensajeError);
         }
         return throwError(error);
       })
