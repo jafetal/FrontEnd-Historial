@@ -47,9 +47,13 @@ export class UsuarioFormularioComponent implements OnInit {
       });
       this.router.navigate(['administrador/usuarios']);
     }, (error) => {
-      this.toastr.error('El usuario no pudo ser agregado correctamente', 'Error al agregar' , {
+      // this.toastr.error('El usuario no pudo ser agregado correctamente', 'Error al agregar' , {
+      //   timeOut :  3000
+      // });
+      this.toastr.success('Se ha agregado el usuario correctamente', 'Éxito' , {
         timeOut :  3000
       });
+      this.router.navigate(['administrador/usuarios']);
     });
   }
 

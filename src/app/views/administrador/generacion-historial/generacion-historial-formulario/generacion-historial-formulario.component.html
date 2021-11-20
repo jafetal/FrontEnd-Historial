@@ -1,0 +1,291 @@
+<div class="row header">
+    <div class="col-md-12">
+        Nuevo registro de Historial <i class="fas fa-plus-circle"></i>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-top: 35px;">
+        <div class="col-md-12">
+            <form #formulario="ngForm"  (ngSubmit)="enviarFormulario(formulario)" novalidate="novalidate">
+                <div class="row justify-content-md-center align-items-start">
+                    <div class="col-md-6">
+                        <div class="row"><div class="col-md-12">CURP:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #curpI="ngModel"
+                                        [(ngModel)]="historial.curp"
+                                        id="usuario"
+                                        name="usuarioName"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Usuario"
+                                        [autofocus]="focusCorreo"
+                                        [disabled]="btnSiguiente"/>
+                                    <div *ngIf="curpI.errors?.required && curpI.dirty" class="error">
+                                        *El CURP es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Nombre:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #nombre="ngModel"
+                                        [(ngModel)]="historial.nombre"
+                                        id="nombre"
+                                        name="nombreName"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Nombre"
+                                        [disabled]="btnSiguiente"/>
+                                    <div *ngIf="nombre.errors?.required && nombre.dirty" class="error">
+                                        *El nombre es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Fecha de nacimiento:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #fechaI="ngModel"
+                                    [(ngModel)]="historial.fecha_nacimiento"
+                                    id="fecha"
+                                    name="fechaName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Fecha de nacimiento"
+                                    />
+                                    <div *ngIf="fechaI.errors?.required && fechaI.dirty" class="error">
+                                        *La fecha de nacimiento es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Dirección:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #direccion="ngModel"
+                                    [(ngModel)]="historial.direccion"
+                                    id="direccionid"
+                                    name="direccionName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Dirección"
+                                    />
+                                    <div *ngIf="direccion.errors?.required && direccion.dirty" class="error">
+                                        *La dirección es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row"><div class="col-md-12">Antecedentes:</div></div>
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Antecedente</th>
+                                            <th>Fecha</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let u of historial.antecedentes;let i = index">
+                                            <td>{{u.antecedente}}</td>
+                                            <td>{{u.fecha}}</td>
+                                            <td><div class="borrarBote"><i class="fas fa-trash-alt borrarBote" (click)="borrarAntecedente(i)"></i></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row"><div class="col-md-12">Ocupación:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #ocupacion="ngModel"
+                                    [(ngModel)]="historial.ocupacion"
+                                    id="ocupacionId"
+                                    name="ocupacionName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Ocupación"
+                                    />
+                                    <div *ngIf="ocupacion.errors?.required && ocupacion.dirty" class="error">
+                                        *La ocupación es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row"><div class="col-md-12">Antecedente:</div></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="el-input">
+                                            <input
+                                            #antecedente="ngModel"
+                                            [(ngModel)]="nuevoAntecedente.antecedente"
+                                            id="antecedenteId"
+                                            name="antecedenteName"
+                                            class="input"
+                                            type="text"
+                                            maxlength="50"
+                                            autocomplete="off"
+                                            placeholder="Antecedente"
+                                            />
+                                            <div *ngIf="antecedente.errors?.required && antecedente.dirty" class="error">
+                                                *La ocupación es requerida
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row"><div class="col-md-12">Fecha:</div></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="el-input">
+                                            <input
+                                            #fechaDelAntecedente="ngModel"
+                                            [(ngModel)]="nuevoAntecedente.fecha"
+                                            id="fechaDelAntecedenteId"
+                                            name="fechaDelAntecedenteName"
+                                            class="input"
+                                            type="text"
+                                            maxlength="50"
+                                            autocomplete="off"
+                                            placeholder="Fecha"
+                                            />
+                                            <div *ngIf="fechaDelAntecedente.errors?.required && fechaDelAntecedente.dirty" class="error">
+                                                *La fecha es requerida
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2 text-center">
+                                <div class="row" style="visibility: hidden;"><div class="col-md-12">Fecha:</div></div>
+                                <button class="button-agregar" type="button" value="Agregar" (click)="agregarAntecedente();">
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row"><div class="col-md-12">Procedimiento:</div></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="el-input">
+                                            <input
+                                            #procedimiento="ngModel"
+                                            [(ngModel)]="nuevaCirugia.procedimiento"
+                                            id="procedimientoId"
+                                            name="procedimientoName"
+                                            class="input"
+                                            type="text"
+                                            maxlength="50"
+                                            autocomplete="off"
+                                            placeholder="Procedimiento"
+                                            />
+                                            <div *ngIf="procedimiento.errors?.required && procedimiento.dirty" class="error">
+                                                *La ocupación es requerida
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row"><div class="col-md-12">Fecha:</div></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="el-input">
+                                            <input
+                                            #fechaDelProcedimiento="ngModel"
+                                            [(ngModel)]="nuevaCirugia.fecha"
+                                            id="fechaDelProcedimientoId"
+                                            name="fechaDelProcedimientoName"
+                                            class="input"
+                                            type="text"
+                                            maxlength="50"
+                                            autocomplete="off"
+                                            placeholder="Fecha"
+                                            />
+                                            <div *ngIf="fechaDelProcedimiento.errors?.required && fechaDelProcedimiento.dirty" class="error">
+                                                *La fecha es requerida
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-2 text-center">
+                                <div class="row" style="visibility: hidden;"><div class="col-md-12">Fecha:</div></div>
+                                <button class="button-agregar" type="button" value="Agregar" (click)="agregarCirugia();">
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div  class="row">
+                            <div class="col-md-6 text-center">
+                                <input class="button-cancelar" type="button" value="Cancelar" (click)="cancelar();">
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <input class="button" type="submit" value="Generar" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row"><div class="col-md-12">Cirugías:</div></div>
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Procedimiento</th>
+                                            <th>fecha</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let u of historial.cirugias; let i = index">
+                                            <td>{{u.procedimiento}}</td>
+                                            <td>{{u.fecha}}</td>
+                                            <td><div class="borrarBote"><i class="fas fa-trash-alt borrarBote" (click)="borrarCirugia(i)"></i></div></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

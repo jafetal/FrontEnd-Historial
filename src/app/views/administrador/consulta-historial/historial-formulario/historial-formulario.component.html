@@ -1,0 +1,219 @@
+<div class="row header">
+    <div class="col-md-12">
+        Consulta de historial
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2 text-center">
+        <button class="button-cancelar" type="button" (click)="cancelar();">
+            <i class="fas fa-arrow-left"></i>   Regresar
+        </button>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-top: 35px;">
+        <div class="col-md-12">
+            <form #formulario="ngForm" novalidate="novalidate">
+                <div class="row justify-content-md-center align-items-start">
+                    <div class="col-md-6">
+                        <div class="row"><div class="col-md-12">CURP:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #curpI="ngModel"
+                                        [(ngModel)]="historial.curp"
+                                        id="usuario"
+                                        name="usuarioName"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Usuario"
+                                        [autofocus]="focusCorreo"
+                                        [disabled]="true"/>
+                                    <div *ngIf="curpI.errors?.required && curpI.dirty" class="error">
+                                        *El CURP es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Nombre:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input id="icon" class="input" 
+                                        #nombre="ngModel"
+                                        [(ngModel)]="historial.nombre"
+                                        id="nombre"
+                                        name="nombreName"
+                                        type="text"
+                                        maxlength="50"
+                                        required="required"
+                                        autocomplete="off"
+                                        placeholder="Nombre"
+                                        [disabled]="true"/>
+                                    <div *ngIf="nombre.errors?.required && nombre.dirty" class="error">
+                                        *El nombre es requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Fecha de nacimiento:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #fechaI="ngModel"
+                                    [(ngModel)]="historial.fecha_nacimiento"
+                                    id="fecha"
+                                    name="fechaName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Fecha de nacimiento"
+                                    [disabled]="true"
+                                    />
+                                    <div *ngIf="fechaI.errors?.required && fechaI.dirty" class="error">
+                                        *La fecha de nacimiento es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row"><div class="col-md-12">Antecedentes:</div></div>
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Antecedente</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let u of historial.antecedentes;let i = index">
+                                            <td>{{u.antecedente}}</td>
+                                            <td>{{u.fecha}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row"><div class="col-md-12">Dirección:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #direccion="ngModel"
+                                    [(ngModel)]="historial.direccion"
+                                    id="direccionid"
+                                    name="direccionName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Dirección"
+                                    [disabled]="true"
+                                    />
+                                    <div *ngIf="direccion.errors?.required && direccion.dirty" class="error">
+                                        *La dirección es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-md-12">Ocupación:</div></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #ocupacion="ngModel"
+                                    [(ngModel)]="historial.ocupacion"
+                                    id="ocupacionId"
+                                    name="ocupacionName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Ocupación"
+                                    [disabled]="true"
+                                    />
+                                    <div *ngIf="ocupacion.errors?.required && ocupacion.dirty" class="error">
+                                        *La ocupación es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="visibility: hidden;"><div class="col-md-12">Dirección:</div></div>
+                        <div class="row" style="visibility: hidden;">
+                            <div class="col-md-12">
+                                <div class="el-input">
+                                    <input
+                                    #direccion="ngModel"
+                                    [(ngModel)]="historial.direccion"
+                                    id="direccionid"
+                                    name="direccionName"
+                                    class="input"
+                                    type="text"
+                                    maxlength="50"
+                                    required="required"
+                                    autocomplete="off"
+                                    placeholder="Dirección"
+                                    [disabled]="true"
+                                    />
+                                    <div *ngIf="direccion.errors?.required && direccion.dirty" class="error">
+                                        *La dirección es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row"><div class="col-md-12">Cirugías:</div></div>
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Procedimiento</th>
+                                            <th>fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let u of historial.cirugias; let i = index">
+                                            <td>{{u.procedimiento}}</td>
+                                            <td>{{u.fecha}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row"><div class="col-md-12">Documentos:</div></div>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Enlace de documento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of documentos; let i = index">
+                    <td><a href="{{u.name_doc}}" target="_blank">{{u.name_doc}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

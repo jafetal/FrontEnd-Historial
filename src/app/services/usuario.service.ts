@@ -15,7 +15,7 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.dataUrl + 'getUserAll');
   }
 
-  public nuevoUsuario(usuario: UsuarioSesion): Observable<string> {
-    return this.http.post<string>(this.dataUrl + 'addUser', usuario);
+  public nuevoUsuario(usuario: UsuarioSesion): Observable<any> {
+    return this.http.post<any>(this.dataUrl + 'addUser', usuario);
   }
 }

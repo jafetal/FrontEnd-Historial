@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-generacion-historial',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneracionHistorialComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public nuevoHistorial(): void{
+    this.router.navigate(['administrador/generacion-historial/nuevo']);
   }
 
 }
